@@ -8,8 +8,9 @@ Adapted from [.travis.yaml](https://github.com/phoe-trash/furcadia-post-splitter
 
 ## Notes
 
-- Used `travis setup releases` to get key.
-- Used `(deploy:define-library)` to not package gl from ubuntu
+- Installed sdl2 from sources (does ubuntu has sdl2 somewhere)
+- `travis setup releases` to get key.
+- `(deploy:define-library)` to not package opengl from ubuntu
 
 ## License
 
