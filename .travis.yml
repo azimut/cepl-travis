@@ -1,7 +1,7 @@
 os:
-#- linux
-#- osx
-- windows
+- linux
+- osx
+#- windows
 language: c
 env:
 - SBCL_VERSION="1.5.7"
