@@ -46,7 +46,8 @@ install:
   wget https://github.com/pal1000/mesa-dist-win/releases/download/19.2.4/mesa3d-19.2.4-release-mingw.7z -O mesa3d/mesa3d.7z
   cd mesa3d/
   7z x mesa3d.7z
-  cmd systemwidedeploy.cmd
+  dir
+  cmd.exe /c systemwidedeploy.cmd
   cd ~
   fi
 - if [ ! -f "$HOME/sbcl/bin/sbcl" ]; then SBCL_SOURCE="http://downloads.sourceforge.net/project/sbcl/sbcl/$SBCL_VERSION/sbcl-$SBCL_VERSION-source.tar.bz2";
