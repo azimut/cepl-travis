@@ -88,9 +88,11 @@ script:
 #   --eval "(sb-ext:exit)"
 #--eval "(ql:quickload :qtools)"
 - sbcl --disable-debugger
+  --eval "(ql:quickload :deploy)"
   --eval "(ql:quickload :cepl-travis)"
   --eval "(sb-ext:exit)"
 - sbcl --disable-debugger
+  --eval "(ql:quickload :deploy)"
   --eval "(asdf:make :cepl-travis)"
 - mv ~/quicklisp/local-projects/cepl-travis/bin ~/bin
 before_deploy:
