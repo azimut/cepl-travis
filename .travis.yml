@@ -37,8 +37,8 @@ install:
 - if [ "$TRAVIS_OS_NAME" = "linux" -a ! -f "$HOME/sbcl/bin/sbcl" ]; then
   sudo apt update;
   sudo apt install sbcl;
-  sudo apt install libsdl2-dev;
   fi
+- sudo apt install libsdl2-dev
 # Download and make new SBCL
 - if [ ! -f "$HOME/sbcl/bin/sbcl" ]; then
   SBCL_SOURCE="http://downloads.sourceforge.net/project/sbcl/sbcl/$SBCL_VERSION/sbcl-$SBCL_VERSION-source.tar.bz2";
