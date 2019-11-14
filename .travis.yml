@@ -27,7 +27,11 @@ install:
 - if [ "$TRAVIS_OS_NAME" = "linux" -a ! -f "$HOME/sbcl/bin/sbcl" ]; then sudo apt
   update; sudo apt install sbcl; fi
 - |
-  if [ "$TRAVIS_OS_NAME" = "linux" -o "$TRAVIS_OS_NAME" = "osx" ]; then
+  if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+  brew install sdl2
+  fi
+- |
+  if [ "$TRAVIS_OS_NAME" = "linux" ]; then
   travis_retry curl -L https://www.libsdl.org/release/SDL2-2.0.8.tar.gz | tar xz
   cd SDL2-2.0.8
   ./configure --prefix /usr
