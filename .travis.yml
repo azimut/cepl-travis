@@ -1,7 +1,7 @@
 os:
-- linux
-- osx
-#- windows
+#- linux
+#- osx
+- windows
 language: c
 env:
 - SBCL_VERSION="1.5.7"
@@ -39,6 +39,16 @@ install:
   sudo make install
   cd ~
   fi
+- |
+  if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+  choco install 7zip
+  mkdir -p mesa3d
+  wget https://github.com/pal1000/mesa-dist-win/releases/download/19.2.4/mesa3d-19.2.4-release-mingw.7z -O mesa3d/mesa3d.7z
+  cd mesa3d/
+  7z x mesa3d.7z
+  cmd systemwidedeploy.cmd
+  cd ~
+  fi
 - if [ ! -f "$HOME/sbcl/bin/sbcl" ]; then SBCL_SOURCE="http://downloads.sourceforge.net/project/sbcl/sbcl/$SBCL_VERSION/sbcl-$SBCL_VERSION-source.tar.bz2";
   wget $SBCL_SOURCE -O sbcl.tar.bz2; tar -xf sbcl.tar.bz2; cd "sbcl-$SBCL_VERSION";
   sh make.sh --fancy; unset SBCL_HOME; INSTALL_ROOT=~/sbcl ./install.sh; cd ~; fi
@@ -54,11 +64,8 @@ install:
 script:
 - sbcl --disable-debugger --eval "(ql:update-all-dists)" --eval "(sb-ext:exit)"
 - sbcl --disable-debugger --eval "(ql:quickload :float-features :verbose t)" --eval "(sb-ext:exit)"
-- sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl-travis)"
-  --eval "(sb-ext:exit)"
-- sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl)"
-  --eval "(deploy:define-library CL-OPENGL-BINDINGS::OPENGL :dont-deploy t)" --eval
-  "(asdf:make :cepl-travis)"
+- sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl-travis)" --eval "(sb-ext:exit)"
+- sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl)" --eval "(deploy:define-library CL-OPENGL-BINDINGS::OPENGL :dont-deploy t)" --eval "(asdf:make :cepl-travis)"
 - mv ~/quicklisp/local-projects/cepl-travis/bin ~/bin
 before_deploy:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install zip; fi
