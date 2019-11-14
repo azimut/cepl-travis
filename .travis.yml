@@ -1,7 +1,7 @@
 os:
 #- linux
-- osx
-#- windows
+#- osx
+- windows
 language: c
 env:
 - SBCL_VERSION="1.5.7"
@@ -53,6 +53,7 @@ install:
 - mv $SOURCE_DIR ~/quicklisp/local-projects
 script:
 - sbcl --disable-debugger --eval "(ql:update-all-dists)" --eval "(sb-ext:exit)"
+- sbcl --disable-debugger --eval "(ql:quickload :float-features :verbose t)" --eval "(sb-ext:exit)"
 - sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl-travis)"
   --eval "(sb-ext:exit)"
 - sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl)"
