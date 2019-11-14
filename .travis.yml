@@ -39,9 +39,10 @@ install:
   sudo apt update;
   sudo apt install sbcl;
   fi
-- sudo apt-cache search sdl
 - # Download, make and install SDL2-2.0.8 (stable)
 - |
+  sudo apt-cache search sdl
+  sudo apt install libgl1-mesa-dev
   travis_retry curl -L https://www.libsdl.org/release/SDL2-2.0.8.tar.gz | tar xz
   cd SDL2-2.0.8
   ./configure --prefix /usr
