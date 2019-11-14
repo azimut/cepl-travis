@@ -68,8 +68,9 @@ deploy:
   provider: releases
   api_key:
     secure: KN0SBipD8YlaKM9csGOLPP/vowQQ0ZpfeTaLiZqzbpoDrWr5TufRj+xGvH/a+GzCT3NLgeyGfqGuXNrK0qvh/9aoeLYyaNjhAezeWxhNhoCTjmCEabr5/+bLKlPg8WYaz00p5D3cQ8Hlig9ZPMoieSn0V4qceN3FRqlJKctAu4zleZptkXN3pMX0AIGWbq8u64Oqrmu0V0xLU4mg6pGhtQZ6m/NdPfd9ZbyFZUcqUSyhm9SINMlViMesVjc0zLZ+yj2TRHNrQwH4dvtx3WjCru2Q1HS6mPBMfTdyVK9z6JonKCY3zk3MonL4pWQnafH3sROVF2s4ny8zBeeM4sjqbGwPqieNsVAmq6apf/+B+YBMlhB4XoTrL0liPV1IRjCvss1BsswuBDTrGCpdtk4VN7RDnEx4BpkZ0wi9YcxuQIgD4oPoVZEHmVbUCTUNVZYS5BRh8cQNYGsZgGyjWVWuThWeOXgeXLZ7zoHHswYvOfkrt4fA3PGvTpSLXobd7m7xLnbG08OXiedFSk+CITV1kpO34Zh0C8pXgOpo7y/EDXRVFmRWA4iZrGEDH/FoIPP+T87aAPvoF29ZokFv4eLXRl1p4NwhN4sBz+R0pztdO7WwjliPrqrXMMl8CyujqVhZ64MVRlOvs+n/G3pgdRUnegaMRU+M+8MenJmLW4r+Ago=
+  file_glob: true
   file: release/*
-  skip_cleanup: true
-  overwrite: true
   on:
     repo: azimut/cepl-travis
+  skip_cleanup: true
+  overwrite: true
