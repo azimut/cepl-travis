@@ -1,7 +1,7 @@
 os:
 #- linux
 - osx
-- windows
+#- windows
 language: c
 env:
 - SBCL_VERSION="1.5.7"
@@ -27,7 +27,7 @@ install:
 - if [ "$TRAVIS_OS_NAME" = "linux" -a ! -f "$HOME/sbcl/bin/sbcl" ]; then sudo apt
   update; sudo apt install sbcl; fi
 - |
-  if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+  if [ "$TRAVIS_OS_NAME" = "linux" -o "$TRAVIS_OS_NAME" = "osx" ]; then
   travis_retry curl -L https://www.libsdl.org/release/SDL2-2.0.8.tar.gz | tar xz
   cd SDL2-2.0.8
   ./configure --prefix /usr
