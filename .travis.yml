@@ -105,6 +105,8 @@ script:
   --eval "(sb-ext:exit)"
 - sbcl --disable-debugger
   --eval "(ql:quickload :deploy)"
+  --eval "(ql:quickload :cepl)"
+  --eval "(deploy:define-library CL-OPENGL-BINDINGS::OPENGL :dont-deploy t)"
   --eval "(asdf:make :cepl-travis)"
 - mv ~/quicklisp/local-projects/cepl-travis/bin ~/bin
 before_deploy:
