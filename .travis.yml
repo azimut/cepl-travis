@@ -38,7 +38,7 @@ install:
   sudo apt update;
   sudo apt install sbcl;
   fi
-- sudo apt install libsdl2-dev
+- sudo apt install libsdl2
 # Download and make new SBCL
 - if [ ! -f "$HOME/sbcl/bin/sbcl" ]; then
   SBCL_SOURCE="http://downloads.sourceforge.net/project/sbcl/sbcl/$SBCL_VERSION/sbcl-$SBCL_VERSION-source.tar.bz2";
