@@ -39,6 +39,14 @@ install:
   sudo apt install sbcl;
   fi
 - sudo apt-cache search sdl
+- # Download, make and install SDL2-2.0.8 (stable)
+- |
+  travis_retry curl -L https://www.libsdl.org/release/SDL2-2.0.8.tar.gz | tar xz
+  cd SDL2-2.0.8
+  ./configure
+  make
+  sudo make install
+
 # Download and make new SBCL
 - if [ ! -f "$HOME/sbcl/bin/sbcl" ]; then
   SBCL_SOURCE="http://downloads.sourceforge.net/project/sbcl/sbcl/$SBCL_VERSION/sbcl-$SBCL_VERSION-source.tar.bz2";
