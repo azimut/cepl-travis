@@ -70,10 +70,17 @@ install:
   --eval "(sb-ext:exit)"; else sbcl --disable-debugger --eval "(load \"quicklisp/setup.lisp\")"
   --eval "(ql-util:without-prompting (ql:add-to-init-file))" --eval "(sb-ext:exit)";
   rm -rf ~/quicklisp/local-projects; mkdir ~/quicklisp/local-projects; fi
+- |
+  if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+  cd ~/quicklisp/local-projects
+  git clone https://github.com/nsrahmad/cl-sdl2
+  cd ~
+  fi
 - mv $SOURCE_DIR ~/quicklisp/local-projects
 script:
 - sbcl --disable-debugger --eval "(ql:update-all-dists)" --eval "(sb-ext:exit)"
 - sbcl --disable-debugger --eval "(ql:quickload :float-features :verbose t)" --eval "(sb-ext:exit)"
+- sbcl --disable-debugger --eval "(ql:quickload :cepl.skitter.sdl2 :verbose t)" --eval "(sb-ext:exit)"
 - sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl-travis)" --eval "(sb-ext:exit)"
 - sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl)" --eval "(deploy:define-library CL-OPENGL-BINDINGS::OPENGL :dont-deploy t)" --eval "(asdf:make :cepl-travis)"
 - mv ~/quicklisp/local-projects/cepl-travis/bin ~/bin

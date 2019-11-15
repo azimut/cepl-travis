@@ -7,6 +7,8 @@ Adapted from [.travis.yaml](https://github.com/phoe-trash/furcadia-post-splitter
 ## Notes
 
 - `travis setup releases` to get github key
+- cl-sdl2:
+  - windows: clone fork due issue [#122](https://github.com/lispgames/cl-sdl2/issues/122)
 - SDL2:
   - linux: Installed sdl2 from sources (does ubuntu has sdl2 somewhere)
   - osx: from brew
