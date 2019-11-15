@@ -49,7 +49,7 @@ install:
   dir
   (
   echo
-  echo 2
+  echo 1
   )>testfile
   cmd.exe /c systemwidedeploy.cmd < testfile
   cd ~
