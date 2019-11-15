@@ -73,7 +73,8 @@ install:
 - |
   if [ "$TRAVIS_OS_NAME" = "windows" ]; then
   cd ~/quicklisp/local-projects
-  git clone https://github.com/nsrahmad/cl-sdl2
+  rm -rf cl-sdl2
+  git clone -b fix-spec-files https://github.com/nsrahmad/cl-sdl2
   cd ~
   fi
 - mv $SOURCE_DIR ~/quicklisp/local-projects
