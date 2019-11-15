@@ -47,12 +47,9 @@ install:
   cd mesa3d/
   7z x mesa3d.7z
   dir
+  @echo off
   (
   echo
-  echo 1
-  echo 8
-  echo 1
-  echo 8
   echo 1
   echo 8
   )>testfile
