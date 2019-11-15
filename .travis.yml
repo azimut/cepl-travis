@@ -47,14 +47,12 @@ install:
   cd mesa3d/
   7z x mesa3d.7z
   dir
+  findstr /V "@GOTO deploy" systemwidedeploy.cmd > systemwidedeploy2.cmd
   (
   echo
   echo 1
-  echo 1
-  echo 1
-  echo 8
   )>testfile
-  cmd.exe /c systemwidedeploy.cmd < testfile
+  cmd.exe /c systemwidedeploy2.cmd < testfile
   cd ~
   fi
 - if [ ! -f "$HOME/sbcl/bin/sbcl" ]; then SBCL_SOURCE="http://downloads.sourceforge.net/project/sbcl/sbcl/$SBCL_VERSION/sbcl-$SBCL_VERSION-source.tar.bz2";
