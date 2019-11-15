@@ -54,17 +54,7 @@ install:
 # SDL2
 #
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then HOMEBREW_NO_AUTO_UPDATE=1 brew install sdl2; fi
-- |
-  if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-  sudo apt update
-  sudo apt-cache search sdl
-  travis_retry curl -L https://www.libsdl.org/release/SDL2-${SDL_VERSION}.tar.gz | tar xz
-  cd SDL2-${SDL_VERSION}
-  ./configure --prefix /usr
-  make
-  sudo make install
-  cd ~
-  fi
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt update; sudo apt install libsdl2-2.0-0 libsdl2-dev; fi
 - |
   if [ "$TRAVIS_OS_NAME" = "windows" ]; then
   mkdir -p sdl2
