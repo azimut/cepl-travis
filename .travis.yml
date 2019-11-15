@@ -4,8 +4,7 @@ os:
 - windows
 language: c
 env:
-- SBCL_VERSION="1.5.7"
-- SDL_VERSION="2.0.10" # linux and windows
+- SBCL_VERSION="1.5.7" SDL_VERSION="2.0.10"
 branches:
   only:
   - master
@@ -52,7 +51,7 @@ install:
   cd ~
   fi
 - |
-  if [[ "$TRAVIS_OS_NAME" = "windows" ]; then
+  if [ "$TRAVIS_OS_NAME" = "windows" ]; then
   mkdir -p sdl2
   wget https://www.libsdl.org/release/SDL2-${SDL_VERSION}-win32-x64.zip -o sdl2/SDL2.zip
   cd sdl2/
