@@ -51,8 +51,10 @@ install:
   (
   echo
   echo 1
+  echo
   echo 8
   )>testfile
+  type testfile
   cmd.exe /c systemwidedeploy.cmd < testfile
   cd ~
   fi
