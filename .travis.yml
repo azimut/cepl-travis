@@ -50,6 +50,8 @@ install:
   (
   echo
   echo 1
+  echo 1
+  echo 1
   echo 8
   )>testfile
   cmd.exe /c systemwidedeploy.cmd < testfile
