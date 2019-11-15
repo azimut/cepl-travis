@@ -6,13 +6,13 @@ Adapted from [.travis.yaml](https://github.com/phoe-trash/furcadia-post-splitter
 
 ## Notes
 
-- Only works on **osx** and **linux**
-- Does not work on **windows**? [1](https://travis-ci.community/t/make-running-gui-apps-available-in-windows/1557/4) [2](https://travis-ci.org/azimut/cepl-travis/builds/611881371#L244)
+- `travis setup releases` to get github key
 - SDL2:
   - linux: Installed sdl2 from sources (does ubuntu has sdl2 somewhere)
   - osx: from brew
-- `travis setup releases` to get key.
-- `(deploy:define-library)` to not package opengl from ubuntu
+- OPENGL:
+  - windows: installed opengl32.dll from [mesa-dist-win](https://github.com/pal1000/mesa-dist-win)
+  - all: `(deploy:define-library)` to not package it
 
 ## License
 
