@@ -10,7 +10,7 @@ Adapted from [.travis.yaml](https://github.com/phoe-trash/furcadia-post-splitter
 - cl-sdl2:
   - windows: clone fork due issue [#122](https://github.com/lispgames/cl-sdl2/issues/122)
 - SDL2:
-  - linux: Installed sdl2 from sources (does ubuntu has sdl2 somewhere)
+  - linux: from apt
   - osx: from brew
   - windows: from official binaries
 - OPENGL:
