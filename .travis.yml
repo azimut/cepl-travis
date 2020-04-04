@@ -13,12 +13,13 @@ branches:
 
 cache:
   directories:
-  - "$HOME/sbcl"
-  - "$HOME/mesa3d"
-  - "$HOME/sdl2"
-  - "$HOME/quicklisp"
-  - "$HOME/.cache/common-lisp"
-  - "$HOME/AppData/Local/cache/common-lisp"
+    - "$HOME/libz"
+    - "$HOME/sbcl"
+    - "$HOME/mesa3d"
+    - "$HOME/sdl2"
+    - "$HOME/quicklisp"
+    - "$HOME/.cache/common-lisp"
+    - "$HOME/AppData/Local/cache/common-lisp"
 
 install:
 - SOURCE_DIR=$(pwd)
@@ -86,19 +87,22 @@ install:
 #
 - mv $SOURCE_DIR ~/quicklisp/local-projects
 #
-# Copy Zlib
+# Zlib
 #
 - |
-  if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    choco install make
-    wget https://zlib.net/zlib1211.zip
-    unzip zlib1211.zip
-    cd zlib-1.2.11/
-    ./configure --sharedlibdir=/bin --prefix=/
-    make SHAREDLIB=libz.dll SHAREDLIBM=libz-1.dll SHAREDLIBV=libz-1.2.11.dll LDSHAREDLIBC='' -j1
-    cp libz.dll libz-1.dll libz-1.2.11.dll C:/windows/system32/
+  if [ "$TRAVIS_OS_NAME" = "windows"  ]; then
+    if [ ! -f "$HOME/libz/zlib1211.zip" ]; then
+      choco install make
+      wget https://zlib.net/zlib1211.zip
+      unzip zlib1211.zip
+      cd zlib-1.2.11/
+      ./configure --sharedlibdir=/bin --prefix=/
+      make SHAREDLIB=libz.dll SHAREDLIBM=libz-1.dll SHAREDLIBV=libz-1.2.11.dll LDSHAREDLIBC='' -j1
+    fi
+    cp $HOME/libz/zlib-1.2.11/libz.dll libz-1.dll libz-1.2.11.dll C:/windows/system32/
     cd ~
   fi
+
 script:
 - sbcl --disable-debugger --eval "(ql:update-all-dists)" --eval "(sb-ext:exit)"
 - sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl-travis)" --eval "(sb-ext:exit)"
