@@ -7,8 +7,6 @@ Adapted from [.travis.yaml](https://github.com/phoe-trash/furcadia-post-splitter
 ## Notes
 
 - `travis setup releases` to get github key
-- cl-sdl2:
-  - windows: clone fork due issue [#122](https://github.com/lispgames/cl-sdl2/issues/122)
 - SDL2:
   - linux: from apt
   - osx: from brew
@@ -16,7 +14,8 @@ Adapted from [.travis.yaml](https://github.com/phoe-trash/furcadia-post-splitter
 - OPENGL:
   - windows: installed opengl32.dll from [mesa-dist-win](https://github.com/pal1000/mesa-dist-win)
   - all: `(deploy:define-library)` to not package it
-
+- ZLIB
+  - windows: manual compilation
 ## License
 
 MIT
