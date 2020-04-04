@@ -82,14 +82,8 @@ install:
   --eval "(ql-util:without-prompting (ql:add-to-init-file))" --eval "(sb-ext:exit)";
   rm -rf ~/quicklisp/local-projects; mkdir ~/quicklisp/local-projects; fi
 #
-# cl-sdl2 - needed for Windows
+# Copy local-projects
 #
-- |
-  if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-  cd ~/quicklisp/local-projects
-  git clone -b fix-spec-files https://github.com/azimut/cl-sdl2
-  cd ~
-  fi
 - mv $SOURCE_DIR ~/quicklisp/local-projects
 
 script:
