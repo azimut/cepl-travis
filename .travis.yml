@@ -100,7 +100,7 @@ install:
       ./configure --sharedlibdir=/bin --prefix=/
       make SHAREDLIB=libz.dll SHAREDLIBM=libz-1.dll SHAREDLIBV=libz-1.2.11.dll LDSHAREDLIBC='' -j1
     fi
-    cp $HOME/libz/zlib-1.2.11/libz.dll libz-1.dll libz-1.2.11.dll C:/windows/system32/
+    cp $HOME/libz/zlib-1.2.11/libz.dll $HOME/libz/zlib-1.2.11/libz-1.dll $HOME/libz/zlib-1.2.11/libz-1.2.11.dll C:/windows/system32/
     cd ~
   fi
 
