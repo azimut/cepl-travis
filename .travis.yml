@@ -85,7 +85,16 @@ install:
 # Copy local-projects
 #
 - mv $SOURCE_DIR ~/quicklisp/local-projects
-- if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install zlib; fi
+#
+# Copy Zlib
+#
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then;
+  wget https://zlib.net/zlib1211.zip
+  unzip zlib1211.zip
+  cd zlib-1.2.11/
+  ./configure --prefix=/
+  make install -j1
+  fi
 script:
 - sbcl --disable-debugger --eval "(ql:update-all-dists)" --eval "(sb-ext:exit)"
 - sbcl --disable-debugger --eval "(ql:quickload :deploy)" --eval "(ql:quickload :cepl-travis)" --eval "(sb-ext:exit)"
