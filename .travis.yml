@@ -88,12 +88,13 @@ install:
 #
 # Copy Zlib
 #
-- if [ "$TRAVIS_OS_NAME" = "windows" ]; then;
-  wget https://zlib.net/zlib1211.zip
-  unzip zlib1211.zip
-  cd zlib-1.2.11/
-  ./configure --prefix=/
-  make install -j1
+- |
+  if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+    wget https://zlib.net/zlib1211.zip
+    unzip zlib1211.zip
+    cd zlib-1.2.11/
+    ./configure --sharedlibdir=/bin --prefix=/
+    make install SHAREDLIB=libz.dll SHAREDLIBM=libz-1.dll SHAREDLIBV=libz-1.2.11.dll LDSHAREDLIBC='' -j1
   fi
 script:
 - sbcl --disable-debugger --eval "(ql:update-all-dists)" --eval "(sb-ext:exit)"
