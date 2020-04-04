@@ -95,7 +95,9 @@ install:
     unzip zlib1211.zip
     cd zlib-1.2.11/
     ./configure --sharedlibdir=/bin --prefix=/
-    make install SHAREDLIB=libz.dll SHAREDLIBM=libz-1.dll SHAREDLIBV=libz-1.2.11.dll LDSHAREDLIBC='' -j1
+    make SHAREDLIB=libz.dll SHAREDLIBM=libz-1.dll SHAREDLIBV=libz-1.2.11.dll LDSHAREDLIBC='' -j1
+    cp libz.dll libz-1.dll libz-1.2.11.dll C:/windows/system32/
+    cd ~
   fi
 script:
 - sbcl --disable-debugger --eval "(ql:update-all-dists)" --eval "(sb-ext:exit)"
