@@ -92,6 +92,7 @@ install:
 - |
   if [ "$TRAVIS_OS_NAME" = "windows"  ]; then
     if [ ! -f "$HOME/libz/zlib1211.zip" ]; then
+      mkdir -p $HOME/libz
       choco install make
       wget https://zlib.net/zlib1211.zip
       unzip zlib1211.zip
