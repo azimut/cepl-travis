@@ -93,7 +93,7 @@ script:
 - mv ~/quicklisp/local-projects/cepl-travis/bin ~/bin
 
 before_deploy:
-- if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install zip; fi
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then choco install zip zlib; fi
 - mv ~/bin ~/quicklisp/local-projects/cepl-travis/bin
 - cd ~/quicklisp/local-projects/cepl-travis
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then mv bin/raptor-splitter bin/raptor-splitter.exe;
