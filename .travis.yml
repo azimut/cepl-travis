@@ -92,15 +92,18 @@ install:
 - |
   if [ "$TRAVIS_OS_NAME" = "windows"  ]; then
     if [ ! -f "$HOME/libz/zlib1211.zip" ]; then
-      mkdir -p $HOME/libz
       choco install make
+      mkdir -p $HOME/libz
+      cd $HOME/libz
       wget https://zlib.net/zlib1211.zip
       unzip zlib1211.zip
       cd zlib-1.2.11/
       ./configure --sharedlibdir=/bin --prefix=/
       make SHAREDLIB=libz.dll SHAREDLIBM=libz-1.dll SHAREDLIBV=libz-1.2.11.dll LDSHAREDLIBC='' -j1
     fi
-    cp $HOME/libz/zlib-1.2.11/libz.dll $HOME/libz/zlib-1.2.11/libz-1.dll $HOME/libz/zlib-1.2.11/libz-1.2.11.dll C:/windows/system32/
+    cp -v $HOME/libz/zlib-1.2.11/libz.dll C:/windows/system32/
+    cp -v $HOME/libz/zlib-1.2.11/libz-1.dll C:/windows/system32/
+    cp -v $HOME/libz/zlib-1.2.11/libz-1.2.11.dll C:/windows/system32/
     cd ~
   fi
 
